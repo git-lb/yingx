@@ -1,0 +1,33 @@
+server:
+  port: 8989
+  servlet:
+    context-path: /yingx
+    jsp:
+      init-parameters:
+        development: true
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yingx?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123
+  #视图解析器
+  mvc:
+    view:
+      suffix: /
+      prefix: .jsp
+  #配置上传文件
+  servlet:
+    multipart:
+      max-request-size: 100MB #请求携带文件最大MB
+      max-file-size: 80MB   #单个文件最大MB
+  #配置redis服务
+  redis:
+    host: 120.55.194.91  #指定redis所在服务器IP地址
+    port: 6379   #指定连接端口
+    database: 0  #指定操作redis哪个库 0-15个库
+
+
+mybatis:
+  type-aliases-package: com.baizhi.entity
+  mapper-locations: classpath:com/baizhi/mapper/*Mapper.xml

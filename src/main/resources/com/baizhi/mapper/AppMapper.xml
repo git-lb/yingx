@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.AppMapper">
+
+    <!--视屏展示的sql-->
+    <sql id="videoShow">
+        c.cate_name cateName,
+        v.id vId,
+        v.title vTitle,
+        v.cover_path coverPath,
+        v.video_path videoPath,
+        v.create_date createDate,
+        v.brief vBrief,
+        u.head_img headImg
+    </sql>
+
+    <!--主页展示视频-->
+    <select id="queryByReleaseTime" resultType="com.baizhi.po.VideoPO">
+        select
+        <include refid="videoShow"/>
+        from yingx_category c
+        right join yingx_video v on c.id = v.category_id
+        left  join yingx_user  u on v.user_id = u.id
+        order by v.create_date desc
+    </select>
+
+</mapper>

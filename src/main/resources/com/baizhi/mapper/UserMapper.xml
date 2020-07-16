@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.UserMapper">
+
+  <sql id="userSql">
+        id,phone,username,head_img headImg,brief,wechat,create_date cteateDate,status
+  </sql>
+
+  <insert id="add" parameterType="User">
+        insert into yingx_user
+        (id,phone,username,head_img,brief,wechat,create_date,status,sex,city)
+        values
+        (
+        #{id}, #{phone},#{username}, #{headImg},#{brief},#{wechat},#{createDate},#{status},#{sex},#{city}
+        )
+  </insert>
+
+
+  <select id="queryByPager" resultType="User">
+        select id,phone,username,head_img headImg,brief,wechat,create_date createDate,status,sex,city from yingx_user limit #{start},#{size}
+  </select>
+
+    <select id="queryBySexAndMonths" resultType="com.baizhi.po.UserPO">
+        SELECT CONCAT( MONTH(create_date),'月') months,COUNT(id) counts
+        from yingx_user where sex = #{sex}  GROUP BY month(create_date)
+    </select>
+
+    <select id="queryBySexAndCity" resultType="com.baizhi.po.UserScattergramPO">
+        SELECT  city name ,COUNT(id) value FROM yingx_user WHERE sex = #{sex} GROUP BY city;
+    </select>
+</mapper>

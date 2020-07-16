@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.VideoMapper">
+  <resultMap id="BaseResultMap" type="com.baizhi.entity.Video">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="brief" jdbcType="VARCHAR" property="brief" />
+    <result column="cover_path" jdbcType="VARCHAR" property="coverPath" />
+    <result column="video_path" jdbcType="VARCHAR" property="videoPath" />
+    <result column="create_date" jdbcType="DATE" property="createDate" />
+    <result column="category_id" jdbcType="VARCHAR" property="categoryId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+  </resultMap>
+
+</mapper>

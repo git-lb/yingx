@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.CategoryMapper">
+  <!--sql语句-->
+  <sql id="cateSql">
+        id,cate_name cateName,levels,parent_id parentId
+    </sql>
+
+  <insert id="addCategory" parameterType="Category">
+        insert into yingx_category(id,cate_name ,levels,parent_id )
+        values (#{id},#{cateName},#{levels},#{parentId})
+    </insert>
+</mapper>
